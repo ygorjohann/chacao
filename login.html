@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+
+<link rel="stylesheet" href= "style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+<title>internet hotspot > login</title>
+<script src="https://kit.fontawesome.com/03a89292db.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+$(if chap-id)
+	<form name="sendin" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+		<input type="hidden" name="">
+	</form>
+	
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	
+	    function doLogin() {
+		document.sendin.username.value = document.login.username.value;
+		document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+		document.sendin.submit();
+		return false;
+	    }
+	
+	</script>
+$(endif)
+    <script src="script.js"></script>
+
+
+ 			
+ 		<form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+		    <input type="hidden" name="dst" value="$(link-orig)" />
+			<input type="hidden" name="popup" value="true" />
+					
+           	      
+              
+	</form>
+  </div>
+			
+        <div class="welcome-back">
+            <div class="container-form">
+               <form class="formulario" action="enviar.php" method="post">
+                <div class="logo">
+                <img class="logo_img" src="img/chacao2.jpg" alt="">
+                </div>
+            <p class="cuenta-gratis">Ingrese sus Datos por favor</p>
+            <input type="text" placeholder="Nombre y Apellido">
+            <input type="text" placeholder="Cedula">
+            <input type="text" placeholder="Telefono">
+            <input type="text" placeholder="Municipio">
+            <input type="email" placeholder="Email">
+
+            <div class="a">
+                $(if trial == 'yes')
+                <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">Ingresar</a>
+                .$(endif)
+               </div>	        
+   
+ </body>
+</html>
+	
+<script type="text/javascript">
+  document.login.username.focus();
+//-->
+</script>
+
